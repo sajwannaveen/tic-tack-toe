@@ -30,6 +30,31 @@ def tic_tac_toe():
             while True:
                 a = input()
                 try:
+                    for i in range (0,ebay_page_length):
+                        info = soup.select('.SECONDARY_INFO')[i].getText().strip()
+                        info = info.upper()
+                        if info=='BRAND NEW':
+                            ebay_name = soup.select('.s-item__title')[i].getText().strip()
+                            name=name.upper()
+                            ebay_name=ebay_name.upper()
+                            if name in ebay_name[:25]:
+                                ebay_price = soup.select('.s-item__price')[i].getText().strip()
+                                ebay_name = soup.select('.s-item__title')[i].getText().strip()
+
+                                ebay_price = ebay_price.replace("INR","₹")
+
+                                ebay_price=ebay_price[0:14]
+                                break
+                                return f"{ebay_name}\nPrise : {ebay_price}\n"
+
+                else:
+                    i+=1
+                    i=int(i)
+                    if i==ebay_page_length:
+
+                        ebay_price = '           Product Not Found'
+                        break
+
                     a  = int(a)
                     a -= 1
                     if a in range(0, 9):
